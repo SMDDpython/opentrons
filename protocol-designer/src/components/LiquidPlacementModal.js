@@ -83,7 +83,7 @@ const mapStateToProps = (state: BaseState): SP => {
     }
   }
 
-  const labware = selectors.getLabware(state)[containerId]
+  const labware = selectors.getLabwareById(state)[containerId]
   let wellContents: ContentsByWell = {}
 
   // selection for deck setup: shows initial state of liquids

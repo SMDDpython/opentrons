@@ -42,7 +42,7 @@ const mapStateToProps = (state: BaseState): StateProps => ({
   selectedTerminalItemId: steplistSelectors.getSelectedTerminalItemId(state),
   ingredSelectionMode: Boolean(selectors.getSelectedContainer(state)),
   drilledDown: !!selectors.getDrillDownLabwareId(state),
-  _moveLabwareMode: !!selectors.slotToMoveFrom(state),
+  _moveLabwareMode: !!selectors.getSlotToMoveFrom(state),
 })
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<*>): DispatchProps => ({

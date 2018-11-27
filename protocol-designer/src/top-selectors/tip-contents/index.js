@@ -86,7 +86,7 @@ const getLastValidTips: GetTipSelector = createSelector(
 )
 
 export const getTipsForCurrentStep: GetTipSelector = createSelector(
-  steplistSelectors.orderedSteps,
+  steplistSelectors.getOrderedSteps,
   fileDataSelectors.robotStateTimeline,
   steplistSelectors.getHoveredStepId,
   steplistSelectors.getActiveItem,

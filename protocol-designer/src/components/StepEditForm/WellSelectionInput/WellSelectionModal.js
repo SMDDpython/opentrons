@@ -115,13 +115,13 @@ class WellSelectionModal extends React.Component<Props, State> {
 function mapStateToProps (state: BaseState, ownProps: OP): SP {
   const {pipetteId, labwareId} = ownProps
 
-  const allLabware = selectors.getLabware(state)
+  const allLabware = selectors.getLabwareById(state)
   const labware = labwareId && allLabware && allLabware[labwareId]
   const allWellContentsForSteps = wellContentsSelectors.allWellContentsForSteps(state)
 
   const stepId = steplistSelectors.getSelectedStepId(state)
   // TODO: Ian 2018-07-31 replace with util function, "findIndexOrNull"?
-  const orderedSteps = steplistSelectors.orderedSteps(state)
+  const orderedSteps = steplistSelectors.getOrderedSteps(state)
   const timelineIdx = orderedSteps.findIndex(id => id === stepId)
   const allWellContentsForStep = allWellContentsForSteps[timelineIdx]
   const formData = steplistSelectors.getUnsavedForm(state)

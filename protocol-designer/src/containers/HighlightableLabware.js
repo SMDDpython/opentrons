@@ -41,7 +41,7 @@ function mapStateToProps (state: BaseState, ownProps: OP): SP {
     }
   }
 
-  const labware = selectors.getLabware(state)[containerId]
+  const labware = selectors.getLabwareById(state)[containerId]
   const allWellContentsForSteps = wellContentsSelectors.allWellContentsForSteps(state)
   const wellSelectionModeForLabware = selectedContainerId === containerId
   let wellContents: ContentsByWell = {}
@@ -62,7 +62,7 @@ function mapStateToProps (state: BaseState, ownProps: OP): SP {
   } else {
     const stepId = activeItem.id
     // TODO: Ian 2018-07-31 replace with util function, "findIndexOrNull"?
-    const orderedSteps = steplistSelectors.orderedSteps(state)
+    const orderedSteps = steplistSelectors.getOrderedSteps(state)
     const timelineIdx = orderedSteps.includes(stepId)
       ? orderedSteps.findIndex(id => id === stepId)
       : null

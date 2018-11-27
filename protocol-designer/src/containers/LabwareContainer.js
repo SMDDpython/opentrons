@@ -66,7 +66,7 @@ function mapStateToProps (state: BaseState, ownProps: OP): SP {
   const isTiprack = getIsTiprack(containerType)
   const showNameOverlay = container && !isTiprack && !labwareHasName
 
-  const slotToMoveFrom = selectors.slotToMoveFrom(state)
+  const slotToMoveFrom = selectors.getSlotToMoveFrom(state)
 
   const slotHasLabware = !!containerType
   const addLabwareMode = selectors.getLabwareSelectionMode(state)
@@ -101,7 +101,7 @@ function mapStateToProps (state: BaseState, ownProps: OP): SP {
     // or when targeted by an open "Add Labware" modal
       ? (isSelectedSlot || selectors.selectedAddLabwareSlot(state) === slot)
     // outside of deckSetupMode, labware is highlighted when step/substep is hovered
-      : steplistSelectors.hoveredStepLabware(state).includes(containerId),
+      : steplistSelectors.getHoveredStepLabware(state).includes(containerId),
     selectedTerminalItem,
 
     slot,

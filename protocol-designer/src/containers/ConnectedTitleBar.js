@@ -46,7 +46,7 @@ function TitleWithIcon (props: TitleWithIconProps) {
 }
 
 function mapStateToProps (state: BaseState): SP {
-  const _page = selectors.currentPage(state)
+  const _page = selectors.getCurrentPage(state)
   const fileName = fileDataSelectors.protocolName(state)
   const selectedStep = steplistSelectors.getSelectedStep(state)
   const selectedTerminalId = steplistSelectors.getSelectedTerminalItemId(state)
@@ -90,7 +90,7 @@ function mapStateToProps (state: BaseState): SP {
         subtitle = END_TERMINAL_TITLE
         if (drilledDownLabwareId) {
           backButtonLabel = 'Deck'
-          const drilledDownLabware = labwareIngredSelectors.getLabware(state)[drilledDownLabwareId]
+          const drilledDownLabware = labwareIngredSelectors.getLabwareById(state)[drilledDownLabwareId]
           title = drilledDownLabware && drilledDownLabware.name
           subtitle = drilledDownLabware && humanizeLabwareType(drilledDownLabware.type)
         }

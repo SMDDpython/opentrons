@@ -19,17 +19,17 @@ type Selector<T> = (RootSlice) => T
 
 export const rootSelector = (state: {pipettes: RootState}) => state.pipettes
 
-export const pipettesById: Selector<PipettesById> = createSelector(
+export const getPipettesById: Selector<PipettesById> = createSelector(
   rootSelector,
   pipettes => pipettes.byId
 )
 
-export const pipetteIdsByMount: Selector<*> = createSelector(
+export const getPipetteIdsByMount: Selector<*> = createSelector(
   rootSelector,
   pipettes => pipettes.byMount
 )
 
-export const pipettesByMount: Selector<*> = createSelector(
+export const getPipettesByMount: Selector<*> = createSelector(
   rootSelector,
   pipettes => mapValues(pipettes.byMount, id => pipettes.byId[id])
 )
@@ -63,7 +63,7 @@ export const equippedPipettes: Selector<PipettesById> = createSelector(
   }, {})
 )
 
-export const equippedPipetteOptions: Selector<Array<DropdownOption>> = createSelector(
+export const getEquippedPipetteOptions: Selector<Array<DropdownOption>> = createSelector(
   equippedPipettes,
   (pipettesById: PipettesById) => {
     const pipetteIds = Object.keys(pipettesById)
@@ -99,7 +99,7 @@ export const equippedPipetteOptions: Selector<Array<DropdownOption>> = createSel
 )
 
 // Formats pipette data specifically for edit pipette
-export const pipettesForInstrumentGroup: Selector<*> = createSelector(
+export const getPipettesForInstrumentGroup: Selector<*> = createSelector(
   rootSelector,
   pipettes => [pipettes.byMount.left, pipettes.byMount.right].reduce((acc, pipetteId) => {
     if (!pipetteId) return acc
@@ -123,7 +123,7 @@ export const pipettesForInstrumentGroup: Selector<*> = createSelector(
 )
 
 // Formats pipette data specifically for edit pipette
-export const pipettesForEditPipettes: Selector<Array<FormattedPipette>> = createSelector(
+export const getPipettesForEditPipettes: Selector<Array<FormattedPipette>> = createSelector(
   rootSelector,
   pipettes => [pipettes.byMount.left, pipettes.byMount.right].reduce((acc, pipetteId) => {
     if (!pipetteId) return acc
@@ -146,7 +146,7 @@ export const pipettesForEditPipettes: Selector<Array<FormattedPipette>> = create
   }, [])
 )
 
-export const permittedTipracks: Selector<Array<string>> = createSelector(
+export const getPermittedTipracks: Selector<Array<string>> = createSelector(
   equippedPipettes,
   (_equippedPipettes) =>
     reduce(_equippedPipettes, (acc: Array<string>, pipette: PipetteData) => {

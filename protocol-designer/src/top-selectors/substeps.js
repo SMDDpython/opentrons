@@ -19,7 +19,7 @@ export const allSubsteps: Selector<AllSubsteps> = createSelector(
   steplistSelectors.getArgsAndErrorsByStepId,
   pipetteSelectors.equippedPipettes,
   labwareIngredSelectors.getLabwareTypes,
-  steplistSelectors.orderedSteps,
+  steplistSelectors.getOrderedSteps,
   fileDataSelectors.robotStateTimeline,
   fileDataSelectors.getInitialRobotState,
   (

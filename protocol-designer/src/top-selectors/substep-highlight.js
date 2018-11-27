@@ -140,7 +140,7 @@ export const wellHighlightsByLabwareId: Selector<AllWellHighlightsAllLabware> = 
   steplistSelectors.getHoveredStepId,
   steplistSelectors.getHoveredSubstep,
   allSubsteps,
-  steplistSelectors.orderedSteps,
+  steplistSelectors.getOrderedSteps,
   (robotStateTimeline, allStepArgsAndErrors, hoveredStepId, hoveredSubstep, allSubsteps, orderedSteps) => {
     const timeline = robotStateTimeline.timeline
     const stepId = hoveredStepId

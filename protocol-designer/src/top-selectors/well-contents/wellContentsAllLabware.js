@@ -55,7 +55,7 @@ const _getWellContents = (
 }
 
 const wellContentsAllLabware: Selector<WellContentsByLabware> = createSelector(
-  labwareIngredSelectors.getLabware,
+  labwareIngredSelectors.getLabwareById,
   labwareIngredSelectors.getIngredientLocations,
   labwareIngredSelectors.getSelectedContainer,
   wellSelectionSelectors.getSelectedWells,
